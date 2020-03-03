@@ -11,6 +11,7 @@ export class CoursesComponent{
     title="Products";
     courses:any;
     _courseService:CoursesService;
+    imageurl="https://i.stack.imgur.com/MVhla.jpg"
 
     getTitile(){
         return this.title;

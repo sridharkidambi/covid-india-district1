@@ -1,12 +1,16 @@
+<div style="align-content: center;padding-left: 25%">
+   <img  [src]="imageurl" />
+   
+   </div>
 <div id='cssmenu'>
         <ul>
            <li><a href='#'><span>Home</span></a></li>
            <li class='active has-sub'><a href='#'><span>{{getTitile()}}</span></a>
               <ul>
                  
-                 <li class='has-sub' *ngFor="let product of getProducts()" ><a href='#'><span>{{product}}</span></a>
+                 <li class='has-sub' *ngFor="let product of getProducts()" ><a href='#'><span>{{product  | uppercase }}</span></a>
                     <ul>
-                       <li><a href='#'><span>Sub Product</span></a></li>
+                       <li><a href='#' src=""><span>Sub Product</span></a></li>
                        <li class='last'><a href='#'><span>Sub Product</span></a></li>
                     </ul>
                  </li>

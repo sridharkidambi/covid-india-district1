@@ -1,2 +1,12 @@
 
 <courses></courses>
+<mat-slider ></mat-slider>
+<div (click)="OnsaveParent($event)">
+<button class="btn btn-primary" [class.active]="isActive" [style.color] = "isActive ? 'orange': 'green' " (click)="Onsave($event)"  >Save</button>
+<button class="btn btn-primary" [class.active]="!isActive"  >Save</button>
+<!-- template variable  #name below -->
+<!-- <input #name [value]="emailadd" (keyup.enter)="emailadd=$event.target.value;OnEnterMe(name.value)" /> -->
+<input [(ngModel)] = "emailadd" (keyup.enter)="OnEnterMe1($event)" />
+<br>
+{{text | summary:40 }} 
+</div>  

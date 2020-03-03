@@ -58,11 +58,11 @@
   border-top: 4px solid #3fa338;
   font-family: Calibri, Tahoma, Arial, sans-serif;
   font-size: 14px;
-  background: #1e1e1e;
-  background: -moz-linear-gradient(top, #1e1e1e 0%, #040404 100%);
+  background:#9a9a9a;
+  /* background: -moz-linear-gradient(top, #1e1e1e 0%, #040404 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1e1e1e), color-stop(100%, #040404));
   background: -webkit-linear-gradient(top, #1e1e1e 0%, #040404 100%);
-  background: linear-gradient(top, #1e1e1e 0%, #040404 100%);
+  background: linear-gradient(top, #1e1e1e 0%, #040404 100%); */
   width: auto;
   zoom: 1;
 }
@@ -106,9 +106,9 @@
 #cssmenu > ul > li.hover,
 #cssmenu > ul > li:hover {
   background-color: #3fa338;
-  -webkit-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    /* -webkit-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15); */
 }
 #cssmenu > ul a:link,
 #cssmenu > ul a:visited {
@@ -123,8 +123,8 @@
 }
 #cssmenu > ul ul {
   border: 1px solid #CCC \9;
-  -webkit-box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.15);
+  /* -webkit-box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.15); */
   width: 150px;
 }
