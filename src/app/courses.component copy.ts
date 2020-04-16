@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { _countGroupLabelsBeforeOption } from '@angular/material/core';
 import {plainToClass} from "class-transformer";
-import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -19,22 +18,17 @@ import { DatePipe } from '@angular/common';
 })
 export class CoursesComponent implements OnInit{
     title="Products";
-    // public selectedItem: any;
-    // public selectedDistrictItem:any;
     covid_data:any;
     itemchartData:ChartData;
     chartDatalst:chartDataList;
-    isGraphVisible:boolean=false;
     districtChartDatalst:chartDataList;
     districtPercentRaiseChartDatalst:chartDataList;
-    districtPercentRaiseSelectedDstChartDatalst:chartDataList;
     state_covid_data=[];
-    selected_state:string="undefined"; 
-    selected_District:string="undefined";
+    selected_state:string="Tamil Nadu";
+    selected_District:string="Chennai";
     _httpService: HttpClient;
     _service:CoursesService;
     courses:any;
-    disableDistrict:boolean=true;
     _courseService:CoursesService;
     imageurl="https://i.stack.imgur.com/MVhla.jpg"
     corona_imageurl="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXsTbPGYb1Tz7kw3cO-lhMRHv4BYgIhWRxZAwrM-h--VAARVsx&usqp=CAU"
@@ -56,7 +50,6 @@ export class CoursesComponent implements OnInit{
     districts=[];
     states=[];
     dates=[];
-    yesterdayDate:any;
 
  
     chartData1=[];
@@ -68,7 +61,7 @@ export class CoursesComponent implements OnInit{
         console.log(event);
       }
 
-    constructor(service:CoursesService,public datepipe: DatePipe){
+    constructor(service:CoursesService){
         this._service=service;
         this.courses = service.getCourses();
         
@@ -77,17 +70,10 @@ export class CoursesComponent implements OnInit{
     getCovidData()
     {
 
-      this.yesterdayDate=new Date();
-      this.yesterdayDate.setDate(this.yesterdayDate.getDate() - 1);
-      // console.log(this.yesterdayDate);
       if(this.covid_data == null){
-      this._service.getCovidDataSer(this.datepipe.transform(this.yesterdayDate, 'yyyy-MM-dd')
-      ).subscribe(resp => {
+      this._service.getCovidDataSer().subscribe(resp => {
         this.covid_data = resp.data;
-
         this.processStateWiseRecords();
-        this.loadStates();
-
       },
         error => {
           console.log(error, "error");
@@ -96,26 +82,12 @@ export class CoursesComponent implements OnInit{
 
     }
 
-    loadStates(){
-      this.covid_data.forEach(element => {
-       if(!this.states.includes(element[1])){
-        this.states.push(element[1]);
-        }
-      });
-      console.log('i am SK states');
-      console.log(this.states);
-    }
 
     processStateWiseRecords(){
       // var _rawdata = new rawdata();
       this.chartDatalst=new chartDataList();
       this.districtPercentRaiseChartDatalst=new chartDataList();
-      this.districtPercentRaiseSelectedDstChartDatalst=new chartDataList();
-      this.districts =[];
-      this.dates=[];
-      this.chartData1=[];
-      console.log("this.covid_data");
-      console.log(this.selected_state);
+      // console.log(this.covid_data);
       this.covid_data.forEach(element => {
         if(this.selected_state == element[1]){
           this.state_covid_data.push(element);
@@ -147,12 +119,6 @@ export class CoursesComponent implements OnInit{
         }
       });
 
-      this.districtPercentRaiseChartDatalst.chartData.forEach(x=>{
-        if(this.selected_District ==x.label){
-          this.districtPercentRaiseSelectedDstChartDatalst.chartData.push(x);
-        }
-      });
-
       //   }
       // });
 
@@ -165,7 +131,6 @@ export class CoursesComponent implements OnInit{
             this.dates.push(item[4]);
           }
       });
-      this.chartLabels1=[];
       this.dates.forEach(item=>{
         this.chartLabels1.push(item);
       });
@@ -176,20 +141,7 @@ export class CoursesComponent implements OnInit{
       this.getCovidData();
     }
 
-    onDropDownChange() {
-      // alert(this.selectedItem);
-      this.disableDistrict=false;
-    this.isGraphVisible=false;
-
-    this.processStateWiseRecords();
-
-  }
-  onDropDownDistrictChange(){
-    this.isGraphVisible=true;
-    this.processStateWiseRecords();
     
-
-  }
 
   getProducts(){
       return this.courses;

@@ -8,22 +8,42 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FavouriteComponent } from './favourite/favourite.component';
+import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.component';
+import { ChartsModule } from 'ng2-charts';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+
+
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     SummaryPipe,
+    // CoursesService,
     AppComponent,
-    CoursesComponent
+    CoursesComponent,
+    FavouriteComponent,
+    BootstrapPanelComponent
+    // NgbModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatSliderModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    SelectDropDownModule,
+    HttpClientModule
+
   ],
   providers: [
-    CoursesService
+    CoursesService,
+    DatePipe
   ],
+
   bootstrap: [AppComponent,CoursesComponent]
 })
 export class AppModule { }

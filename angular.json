@@ -25,9 +25,12 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              // "./node_modules/ngx-select-dropdown/dist/assets/style.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/chart.js/dist/Chart.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -91,9 +94,12 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "./node_modules/ngx-select-dropdown/dist/assets/style.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/chart.js/dist/Chart.min.js"
+            ]
           }
         },
         "lint": {
