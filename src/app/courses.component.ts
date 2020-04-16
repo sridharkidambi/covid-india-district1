@@ -57,6 +57,7 @@ export class CoursesComponent implements OnInit{
     states=[];
     dates=[];
     yesterdayDate:any;
+    raw_resp:any;
 
  
     chartData1=[];
@@ -83,7 +84,8 @@ export class CoursesComponent implements OnInit{
       if(this.covid_data == null){
       this._service.getCovidDataSer(this.datepipe.transform(this.yesterdayDate, 'yyyy-MM-dd')
       ).subscribe(resp => {
-        this.covid_data = resp.data;
+        this.raw_resp=resp;
+        this.covid_data = this.raw_resp.data;
 
         this.processStateWiseRecords();
         this.loadStates();
