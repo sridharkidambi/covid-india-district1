@@ -20,8 +20,7 @@ export class CoursesService {
   }
 
   getCovidDataSer(dte:string){
-    console.log('todays date');
-    console.log(dte)
+
   //  return this._httpService.get('https://raw.githubusercontent.com/sridharkidambi/Gl-AIML/master/learnings/district_wise_pan_india2020-04-15.json');
    return this._httpService.get('https://raw.githubusercontent.com/sridharkidambi/Gl-AIML/master/learnings/district_wise_pan_india'+dte+ '.json');
 }
