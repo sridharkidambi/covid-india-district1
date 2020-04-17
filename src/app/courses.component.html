@@ -27,9 +27,11 @@
    <span style="padding:5px"></span>
    <img  [src]="corona_imageurl"  style="width:20%;height:110px"/>
    
-   </div>
-   
+</div>
+   <div>
    <br>
+   <div style="text-align: center;position:fixed"></div>
+   <h2 style="border-block-end-color: bisque">District wise Covid Data</h2>
    <br>
    <hr style="border: 10px solid orange;
    border-radius: 0px;">
@@ -37,43 +39,40 @@
    border-radius: 5px;">
    <br>
    <br>
-
-<h2>Select State:</h2>
-
-<select [(ngModel)]="selected_state" (ngModelChange)="onDropDownChange()" >
-  <option [ngValue]="undefined" >Select Item</option>
-  <option *ngFor="let item of states" >{{item}}</option>
-</select>
-<h2>Select District:</h2>
-<select [(ngModel)]="selected_District" (ngModelChange)="onDropDownDistrictChange()" [disabled]="disableDistrict" >
-  <option [ngValue]="undefined" >Select Item</option>
-  <option *ngFor="let item of districts" >{{item}}</option>
-</select>
+   <h5>The below graph(s) provides Covid cases count on a daily basis across districts(for a State) and also for a specific district.</h5>
    <br>
    <br>
+  </div>
+  <div style="width:100%;">
+    <div style="width:50%;">
+    <h6 style="width:50%">Select State:</h6>
+    <select [(ngModel)]="selected_state" (ngModelChange)="onDropDownChange()"  >
+      <option [ngValue]="undefined" >Select Item</option>
+      <option *ngFor="let item of states" >{{item}}</option>
+    </select>
+  </div>
+  <br>
+  <div style="width:50%;">
+  <h6 style="width:50%">Select District:</h6>
+  <select [(ngModel)]="selected_District" (ngModelChange)="onDropDownDistrictChange()" style="width:50%" [disabled]="disableDistrict" >
+    <option [ngValue]="undefined" >Select Item</option>
+    <option *ngFor="let item of districts" >{{item}}</option>
+  </select>
+  </div>
+<br><br>
+<hr style="border: 10px solid orange;
+border-radius: 0px;">
+<hr style="border: 10px solid green;
+border-radius: 5px;">
+<br>
+</div>
 
    <div *ngIf="isGraphVisible" >
     
-<h2>StateWise Analysis:  <b>{{selected_state}}</b></h2>
+<!-- <h6>How many patients added on today  in my  districts ,for the state:  <b>{{selected_state}}</b></h6> -->
   <div style="align-content: center;" >
-    <canvas width="50%"  height="300px"
-        baseChart
-        [chartType]="'line'"
-        [datasets]="this.chartDatalst.chartData"
-        [labels]="chartLabels1"
-        [options]="chartOptions"
-        [legend]="true"
-        (chartClick)="onChartClick($event)">
-    </canvas>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
- 
-    <div style="align-content: center" >
       
-    <h2>Distric  Daily Growth Raise in Count:  <b>{{selected_District}}</b></h2>
+    <h6>New patients in the district:  <b>{{selected_District}}</b></h6>
 
     <canvas width="50%" height="300px"
         baseChart
@@ -85,45 +84,75 @@
         (chartClick)="onChartClick($event)">
     </canvas>
   </div>
-
+  
   <br>
   <br>
   <br>
   <br>
-    <div style="align-content: center" >
+ 
+    <div style="align-content: center;" >
       
-    <h2>Distric wise Daily Growth % (from Prev Day):  <b>{{selected_District}}</b></h2>
+    <h6>New patients across districts in the state(best view in laptop):  <b>{{selected_state}}</b></h6>
 
-    <canvas width="50%" height="300px"
-        baseChart
-        [chartType]="'line'"
-        [datasets]="this.districtPercentRaiseChartDatalst.chartData"
-        [labels]="dates"
-        [options]="chartOptions"
-        [legend]="true"
-        (chartClick)="onChartClick($event)">
-    </canvas>
+    <div style="align-content: center;" >
+        <canvas width="50%"  height="400px"
+            baseChart
+            [chartType]="'line'"
+            [datasets]="this.chartDatalst.chartData"
+            [labels]="chartLabels1"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+      </div>
   </div>
 
   <br>
   <br>
   <br>
   <br>
+  <br><br>
+  <hr style="border: 10px solid orange;
+  border-radius: 0px;">
+  <hr style="border: 10px solid green;
+  border-radius: 5px;">
+  <br>
     <div style="align-content: center" >
+        
+        <h6>District wise Daily patients raise in  % :  <b>{{selected_District}}</b></h6>
+    
+        <canvas height="300px"
+            baseChart
+            [chartType]="'line'"
+            [datasets]="this.districtPercentRaiseSelectedDstChartDatalst.chartData"
+            [labels]="chartLabels1"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+    
+      </div>
+    
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <div style="align-content: center" >
       
-    <h2>Distric wise Daily Growth % (from Prev Day) for selected city:  <b>{{selected_District}}</b></h2>
-
-    <canvas height="300px"
-        baseChart
-        [chartType]="'line'"
-        [datasets]="this.districtPercentRaiseSelectedDstChartDatalst.chartData"
-        [labels]="chartLabels1"
-        [options]="chartOptions"
-        [legend]="true"
-        (chartClick)="onChartClick($event)">
-    </canvas>
-
-  </div>
+      <!-- <h6>District wise Daily Growth % (from Prev Day):  <b>{{selected_District}}</b></h6> -->
+      <h6>Districts wise Daily Growth % raise for  state:  <b>{{selected_state}}</b></h6>
+  
+      <canvas width="50%" height="300px"
+          baseChart
+          [chartType]="'line'"
+          [datasets]="this.districtPercentRaiseChartDatalst.chartData"
+          [labels]="dates"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartClick)="onChartClick($event)">
+      </canvas>
+    </div>
   </div>
    <!-- <div style="width:100%;column-span:4">
       <div style="width:50%;column-span:2">
