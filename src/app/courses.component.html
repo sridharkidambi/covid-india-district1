@@ -44,17 +44,17 @@
    <br>
   </div>
   <div style="width:100%;">
-    <div style="width:50%;">
-    <h6 style="width:50%">Select State:</h6>
+    <div style="width:100%;">
+    <h6 style="width:100%">Select State:</h6>
     <select [(ngModel)]="selected_state" (ngModelChange)="onDropDownChange()"  >
       <option [ngValue]="undefined" >Select Item</option>
       <option *ngFor="let item of states" >{{item}}</option>
     </select>
   </div>
   <br>
-  <div style="width:50%;">
-  <h6 style="width:50%">Select District:</h6>
-  <select [(ngModel)]="selected_District" (ngModelChange)="onDropDownDistrictChange()" style="width:50%" [disabled]="disableDistrict" >
+  <div style="width:100%;">
+  <h6 style="width:100%">Select District:</h6>
+  <select [(ngModel)]="selected_District" (ngModelChange)="onDropDownDistrictChange()" style="width:40%" [disabled]="disableDistrict" >
     <option [ngValue]="undefined" >Select Item</option>
     <option *ngFor="let item of districts" >{{item}}</option>
   </select>
@@ -92,10 +92,10 @@ border-radius: 5px;">
  
     <div style="align-content: center;" >
       
-    <h6>New patients across districts in the state(best view in laptop):  <b>{{selected_state}}</b></h6>
+    <h6>New patients across districts in the state(best view in laptop or deselect lables):  <b>{{selected_state}}</b></h6>
 
-    <div style="align-content: center;" >
-        <canvas width="50%"  height="400px"
+    <div style="position: relative;height: 400px" >
+        <canvas  
             baseChart
             [chartType]="'line'"
             [datasets]="this.chartDatalst.chartData"
@@ -117,11 +117,11 @@ border-radius: 5px;">
   <hr style="border: 10px solid green;
   border-radius: 5px;">
   <br>
-    <div style="align-content: center" >
+    <div style="align-content: center;height: 300px;" >
         
         <h6>District wise Daily patients raise in  % :  <b>{{selected_District}}</b></h6>
     
-        <canvas height="300px"
+        <canvas 
             baseChart
             [chartType]="'line'"
             [datasets]="this.districtPercentRaiseSelectedDstChartDatalst.chartData"
@@ -138,12 +138,12 @@ border-radius: 5px;">
   <br>
   <br>
   <br>
-  <div style="align-content: center" >
+  <div style="position: relative;height:450px;" >
       
       <!-- <h6>District wise Daily Growth % (from Prev Day):  <b>{{selected_District}}</b></h6> -->
-      <h6>Districts wise Daily Growth % raise for  state:  <b>{{selected_state}}</b></h6>
+      <h6>Districts wise Daily Growth % raise for  state(best view in laptop or deselect lables):  <b>{{selected_state}}</b></h6>
   
-      <canvas width="50%" height="300px"
+      <canvas id="disme"
           baseChart
           [chartType]="'line'"
           [datasets]="this.districtPercentRaiseChartDatalst.chartData"
@@ -152,6 +152,20 @@ border-radius: 5px;">
           [legend]="true"
           (chartClick)="onChartClick($event)">
       </canvas>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="position: relative;height:450px;" >
+        <h6><b>Top 10 districts in patients</b></h6>
+        <canvas  height="450"
+            baseChart
+            [chartType]="'doughnut'"
+            [data]="pieData"
+            [labels]="pieStateDist">
+        </canvas>
     </div>
   </div>
    <!-- <div style="width:100%;column-span:4">

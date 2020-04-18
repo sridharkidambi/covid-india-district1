@@ -9,6 +9,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { _countGroupLabelsBeforeOption } from '@angular/material/core';
 import {plainToClass} from "class-transformer";
 import { DatePipe } from '@angular/common';
+import { filter } from 'minimatch';
+import { MultiDataSet, Label } from 'ng2-charts';
+
 
 
 @Component({
@@ -21,7 +24,11 @@ export class CoursesComponent implements OnInit{
     title="Products";
     // public selectedItem: any;
     // public selectedDistrictItem:any;
+    count:number=0;
+    pieData:MultiDataSet=[];
+    pieStateDist: Label[]=[];
     covid_data:any;
+    covid_data_filtered:any;
     itemchartData:ChartData;
     chartDatalst:chartDataList;
     isGraphVisible:boolean=false;
@@ -104,7 +111,14 @@ export class CoursesComponent implements OnInit{
         this.states.push(element[1]);
         }
       });
-      console.log('i am SK states');
+      // console.log('i am SK states');
+      this.states=this.states.sort(function(a, b) { 
+
+        if(b>a)  return -1;
+        if(a>b)  return +1;
+
+       return 0;
+      });
       console.log(this.states);
     }
 
@@ -116,8 +130,8 @@ export class CoursesComponent implements OnInit{
       this.districts =[];
       this.dates=[];
       this.chartData1=[];
-      console.log("this.covid_data");
-      console.log(this.selected_state);
+      // console.log("this.covid_data");
+      // console.log(this.selected_state);
       this.covid_data.forEach(element => {
         if(this.selected_state == element[1]){
           this.state_covid_data.push(element);
@@ -171,11 +185,48 @@ export class CoursesComponent implements OnInit{
       this.dates.forEach(item=>{
         this.chartLabels1.push(item);
       });
-    
+      // Sort the data
+      this.covid_data= this.covid_data.sort((a,b)=>{
+        if(a[3]>b[3]) return -1;        
+        if(b[3]>a[3]) return +1;        
+        return 0;
+      });
+      this.covid_data_filtered= this.covid_data.filter(x=>{
+        if(x[4]== this.datepipe.transform(this.yesterdayDate, 'yyyy-MM-dd'))
+        return x;
+      });
+      console.log(this.covid_data_filtered)
+      this.covid_data_filtered.forEach(element => {
+        if(this.count<10){
+          // console.log(element)
+          this.pieData.push(element[3]);
+          this.pieStateDist.push(element[1]+'-'+element[2]);
+        }
+        this.count=this.count+1;
+      });
+      console.log('piedata')
+      console.log(this.pieData)
+      console.log(this.pieStateDist)
+        
+      // }
+      // count=0;
+      // for(let item in this.covid_data_filtered){
+      //   console.log(this.count);
+
+      //   if(this.count<=10){
+      //     console.log(this.covid_data_filtered[item]);
+      //     console.log(this.covid_data_filtered[item]);
+      //     this.count=this.count+1;
+      //     return;
+      //   }
+      //   break;
+      // }
   };
 
     ngOnInit() {
       this.getCovidData();
+      
+
     }
 
     onDropDownChange() {
