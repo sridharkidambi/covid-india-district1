@@ -46,6 +46,7 @@ export class CoursesComponent implements OnInit{
     imageurl="https://i.stack.imgur.com/MVhla.jpg"
     corona_imageurl="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXsTbPGYb1Tz7kw3cO-lhMRHv4BYgIhWRxZAwrM-h--VAARVsx&usqp=CAU"
     india_imageurl="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSkwLkmJBZuIl8OsSAYMpy3S0T3_tRBkm3R5fywqjA_hMNfkhBM&usqp=CAU"
+    github_mage="https://camo.githubusercontent.com/c74b51369a0de0108418ebaff7198345eb461a3b/68747470733a2f2f692e696d6775722e636f6d2f377072364b466b2e706e67"
     
 
     getTitile(){

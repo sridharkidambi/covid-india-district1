@@ -14,7 +14,7 @@ import { favChangeEventargs } from './favourite/favourite.component';
 
 })
 export class AppComponent {
-  title = 'sk-banking-app';
+  title = 'sk-covid-india-district';
   isActive:boolean=true;
   emailadd:string="sridhar.kidambi@wipro.com";
   text:string='We’re reaching out to let you know that Robinhood is currently back up and running. We want to assure you that your funds are safe and personal information was not affected';

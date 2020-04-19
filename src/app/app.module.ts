@@ -14,6 +14,7 @@ import { ChartsModule } from 'ng2-charts';
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { NgMarqueeModule } from 'ng-marquee';
 
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -36,7 +37,8 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ChartsModule,
     SelectDropDownModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMarqueeModule
 
   ],
   providers: [

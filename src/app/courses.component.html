@@ -30,11 +30,14 @@
 </div>
    <div>
    <br>
-   <div style="text-align: center;position:fixed"></div>
+   <div style="text-align: center;position: relative;"></div>
    <h2 style="border-block-end-color: bisque">District wise Covid Data</h2>
    <br>
    <hr style="border: 10px solid orange;
    border-radius: 0px;">
+   <ng-marquee>
+      <mark><b>Let's fight COVID togather-BE HOME!!! BE SAFE !!!! <a href="https://www.mohfw.gov.in/" target="__blank">MOHFW</a></b></mark>
+  </ng-marquee>
    <hr style="border: 10px solid green;
    border-radius: 5px;">
    <br>
@@ -67,10 +70,26 @@ border-radius: 5px;">
 <br>
 </div>
 
+
+
    <div *ngIf="isGraphVisible" >
+      <div style="align-content: center;" >
+        
+          <h6><b>Top 10 districts with active patients:</b></h6>
+          <canvas 
+              baseChart
+              [chartType]="'doughnut'"
+              [data]="pieData"
+              [labels]="pieStateDist">
+          </canvas>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
     
 <!-- <h6>How many patients added on today  in my  districts ,for the state:  <b>{{selected_state}}</b></h6> -->
-  <div style="align-content: center;" >
+  <div style="align-content: center;  " >
       
     <h6>New patients in the district:  <b>{{selected_District}}</b></h6>
 
@@ -154,19 +173,14 @@ border-radius: 5px;">
       </canvas>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <div style="position: relative;height:450px;" >
-        <h6><b>Top 10 districts in patients</b></h6>
-        <canvas  height="450"
-            baseChart
-            [chartType]="'doughnut'"
-            [data]="pieData"
-            [labels]="pieStateDist">
-        </canvas>
-    </div>
+
+  </div>
+  <br>
+  <br>
+  <div >
+    <a   href="https://api.covid19india.org/" target="_blank">
+        <img style="height:75px" [src]="github_mage">
+    </a>
   </div>
    <!-- <div style="width:100%;column-span:4">
       <div style="width:50%;column-span:2">
